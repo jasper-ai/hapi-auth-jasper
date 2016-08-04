@@ -1,0 +1,65 @@
+{
+  "name": "hapi-auth-jasper",
+  "version": "0.0.1",
+  "description": "Authenticate via jasper-iam service",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "rimraf lib && babel src --out-dir lib --source-maps inline",
+    "compile:watch": "rimraf lib && babel src --watch --out-dir lib --source-maps inline",
+    "deploy": "npm run compile && npm publish",
+    "lint": "standard \"src/**/*.js\"",
+    "pretest": "npm run lint",
+    "pretest:unit": "npm run lint",
+    "test": "istanbul cover ava",
+    "test:watch": "istanbul cover ava -- --watch",
+    "test:coverage": "npm test && codeclimate-test-reporter < coverage/lcov.info",
+    "test:unit": "ava -- --match \"*.unit.test.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jasper-ai/hapi-auth-jasper.git"
+  },
+  "keywords": [
+    "jasper",
+    "hapi",
+    "healthcheck"
+  ],
+  "author": "kurtiskemple@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasper-ai/hapi-auth-jasper/issues"
+  },
+  "homepage": "https://github.com/jasper-ai/hapi-auth-jasper#readme",
+  "dependencies": {
+    "highwire": "^1.1.6"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.0.14",
+    "babel-register": "^6.11.6",
+    "codeclimate-test-reporter": "^0.3.3",
+    "hapi": "^14.1.0",
+    "hapi-auth-basic": "^4.2.0",
+    "hapi-auth-jwt2": "^7.0.1",
+    "istanbul": "^1.0.0-alpha.2",
+    "rimraf": "^2.5.4",
+    "standard": "^7.1.2"
+  },
+  "peerDependencies": {
+    "hapi": "^14.0.0",
+    "hapi-auth-basic": "^4.2.0",
+    "hapi-auth-jwt2": "^7.0.0"
+  },
+  "ava": {
+    "files": [
+      "src/**/*.test.js"
+    ],
+    "failFast": true,
+    "tap": true,
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  }
+}
