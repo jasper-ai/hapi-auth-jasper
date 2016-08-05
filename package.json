@@ -10,8 +10,8 @@
     "lint": "standard \"src/**/*.js\"",
     "pretest": "npm run lint",
     "pretest:unit": "npm run lint",
-    "test": "npm run db:migrate:run && npm run db:seed:run && nyc ava",
-    "test:watch": "npm run db:migrate:run && npm run db:seed:run && nyc ava -- --watch",
+    "test": "nyc ava",
+    "test:watch": "nyc ava -- --watch",
     "test:coverage": "npm run test && nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "test:unit": "ava -- --match \"[Unit]\""
   },
