@@ -2,13 +2,13 @@ import pkg from '../package.json'
 import { post } from 'highwire'
 
 module.exports.register = (server, options, next) => {
-  if (!options.endpoint) throw new Error('Endpoint required!')
+  if (!options.endpoint) throw new Error('Jasper endpoint required!')
 
   const basic = (request, username, password, callback) => {
     post(`${options.endpoint}/auth/basic`, { username, password })
       .then((response) => response.body)
-      .then(({ userId, scope }) => callback(null, true, {
-        userId,
+      .then(({ user, scope }) => callback(null, true, {
+        user,
         scope,
         authType: 'basic'
       }))
@@ -18,8 +18,8 @@ module.exports.register = (server, options, next) => {
   const jwt = (decoded, request, callback) => {
     post(`${options.endpoint}/auth/jwt`, { cuid: decoded.cuid })
       .then((response) => response.body)
-      .then(({ userId, scope }) => callback(null, true, {
-        userId,
+      .then(({ user, scope }) => callback(null, true, {
+        user,
         scope,
         authType: 'jwt'
       }))
