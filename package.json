@@ -1,6 +1,6 @@
 {
   "name": "hapi-auth-jasper",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Authenticate via jasper-iam service",
   "main": "lib/index.js",
   "scripts": {
