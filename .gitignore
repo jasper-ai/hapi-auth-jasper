@@ -1,6 +1,6 @@
 node_modules
 coverage
-lib
+build
 npm-debug.log
 .nyc_output
 coverage.lcov
